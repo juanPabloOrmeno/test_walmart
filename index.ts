@@ -18,10 +18,6 @@ server.app.use( bodyParser.json());
 server.app.use( '/productos', productoRouter);
 
 
-
-
-
-
 //cors
 server.app.use( cors({ origin: true, credentials: true }));
 
