@@ -37,7 +37,7 @@
   ],
   "components": {
     "schemas": {
-      "ResponseProductos": {
+      "ResponseProducto": {
         "type": "object",
         "required": [
           "ok"
@@ -86,7 +86,22 @@
   },
   "paths": {
     "/productos/": {
-      "get": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "producto": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "Productos"
         ],
@@ -97,7 +112,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseProductos"
+                  "$ref": "#/components/schemas/ResponseProducto"
                 }
               }
             }
