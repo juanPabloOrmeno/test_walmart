@@ -9,33 +9,48 @@ productoRouter.post('/', async (req: any, res: Response) => {
     let producto: any = body.producto
     let query: any
 
-    if(!isNaN(producto))
-        if(producto === '')
-            query = {}
-         else
-            query =  {"id": producto } 
-    else
-        query = {$or:[
-                    {"brand": { "$regex": producto, "$options": "i" }},
-                    {"description": { "$regex": producto, "$options": "i" }}
-                ]}
 
-    try{
+    try {
+        if (!isNaN(producto))
+            if (producto === '')
+                query = {}
+            else
+                query = { "id": producto }
+        else
+            if (producto.length >= 3) {
+                query = {
+                    $or: [
+                        { "brand": { "$regex": producto, "$options": "i" } },
+                        { "description": { "$regex": producto, "$options": "i" } }
+                    ]
+                }
+
+            }
+            else{
+
+                res.status(200).send({
+                    status: "false",
+                    response: 'la busqueda contener al menos 3 caracteres',
+                });
+
+            }
+
+
         const response = await Products.find(query).exec();
-        let resultado  = response.map((p:any)=>{
-            p.price = palindromo(p.brand)?p.price*0.5:p.price;
+        let resultado = response.map((p: any) => {
+            p.price = palindromo(p.brand) ? p.price * 0.5 : p.price;
             p.descuento = palindromo(p.brand)
             return p
         })
 
         res.status(200).send({
-            status:"true",
+            status: "true",
             response: resultado,
         });
 
-    }catch(e){
+    } catch (e) {
         res.status(500).json({
-            status:false,
+            status: false,
             error: e
         })
     }
@@ -44,21 +59,21 @@ productoRouter.post('/', async (req: any, res: Response) => {
 
 
 
- function palindromo(cadena: string) {
+function palindromo(cadena: string) {
     var x = cadena.length;
     var cadenaInvertida = "";
-  
-    while (x>=0) {
-      cadenaInvertida = cadenaInvertida + cadena.charAt(x);
-      x--;
+
+    while (x >= 0) {
+        cadenaInvertida = cadenaInvertida + cadena.charAt(x);
+        x--;
     }
 
 
-    if(cadena === cadenaInvertida)
+    if (cadena === cadenaInvertida)
         return true
     else
         return false
-  }
+}
 
 
 export default productoRouter;
