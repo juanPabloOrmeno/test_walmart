@@ -18,6 +18,10 @@ const productsSchema = new Schema({
     price: {
         type: Number
     },
+    descuento:{
+        type: Boolean,
+        required: false
+    }
 
 });
 
@@ -31,6 +35,7 @@ interface IProducts extends Document{
     description: string;
     image: string;
     price: Number;
+    descuento: boolean
 }
 
 

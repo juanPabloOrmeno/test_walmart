@@ -22,9 +22,15 @@ productoRouter.post('/', async (req: any, res: Response) => {
 
     try{
         const response = await Products.find(query).exec();
+        let resultado  = response.map((p:any)=>{
+            p.price = palindromo(p.brand)?p.price*0.5:p.price;
+            p.descuento = palindromo(p.brand)
+            return p
+        })
+
         res.status(200).send({
-            status:true,
-            response: response,
+            status:"true",
+            response: resultado,
         });
 
     }catch(e){
@@ -34,5 +40,25 @@ productoRouter.post('/', async (req: any, res: Response) => {
         })
     }
 });
+
+
+
+
+ function palindromo(cadena: string) {
+    var x = cadena.length;
+    var cadenaInvertida = "";
+  
+    while (x>=0) {
+      cadenaInvertida = cadenaInvertida + cadena.charAt(x);
+      x--;
+    }
+
+
+    if(cadena === cadenaInvertida)
+        return true
+    else
+        return false
+  }
+
 
 export default productoRouter;
