@@ -17,17 +17,10 @@
 ## iniciar proyecto, en caso de no querer partir proyecto ejecutar en consola tsc
 - npm run dev
 
-## compilar proyecto y dockerizar  (verificar nombre de package y version)
-- npm run docker:build
 
-
-## correr docker con docker-compose (Puerto expuesto 3000)
+## correr docker con docker-compose (Puerto expuesto 5000)
 - docker-compose build
 - docker-compose up -d
-
-
-# IMPORTANTE: 
-- Tener la variable de ambiente DB_HOST definida, se agrego al package si lo corren local solo para sismate unix
 
 
 
