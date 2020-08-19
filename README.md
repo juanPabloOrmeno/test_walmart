@@ -1,0 +1,34 @@
+[![Build Status](https://drone.smartworld.cl/api/badges/smartworld1/micro-tour-tours/status.svg)](https://drone.smartworld.cl/smartworld1/micro-tour-tours)
+
+## System
+- Node              : v12.14.1 
+- npm               : 6.14.15
+
+
+## la base de datos apunta al servidor con la ip 157.245.90.117:27017
+- si desea cambiar este servidor debe modificar el archivo global/enviroment.ts
+
+## instalar typescript para correr comando tsc 
+- npm install typescript -g
+
+## instalar los paquetes de package.json 
+- npm install
+
+## iniciar proyecto, en caso de no querer partir proyecto ejecutar en consola tsc
+- npm run dev
+
+## compilar proyecto y dockerizar  (verificar nombre de package y version)
+- npm run docker:build
+
+
+## correr docker con docker-compose (Puerto expuesto 3000)
+- docker-compose build
+- docker-compose up -d
+
+
+# IMPORTANTE: 
+- Tener la variable de ambiente DB_HOST definida, se agrego al package si lo corren local solo para sismate unix
+
+
+
+
