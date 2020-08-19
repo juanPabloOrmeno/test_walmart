@@ -14,9 +14,6 @@
 ## instalar los paquetes de package.json 
 - npm install
 
-## iniciar proyecto, en caso de no querer partir proyecto ejecutar en consola tsc
-- npm run dev
-
 
 ## correr docker con docker-compose (Puerto expuesto 5000)
 - docker-compose build

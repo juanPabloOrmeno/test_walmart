@@ -8,5 +8,6 @@ RUN npm install --only=production
 
 # Bundle app source
 COPY ./dist .
-CMD npm run prod
+
 EXPOSE 5000
+CMD npm run prod
