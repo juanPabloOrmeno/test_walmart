@@ -1,5 +1,3 @@
-[![Build Status](https://drone.smartworld.cl/api/badges/smartworld1/micro-tour-tours/status.svg)](https://drone.smartworld.cl/smartworld1/micro-tour-tours)
-
 ## System
 - Node              : v12.14.1 
 - npm               : 6.14.15
